@@ -3,7 +3,7 @@
 class Produk
 {
 
-    public $kode, $nama, $harga, $stok, $nilai, $total;
+    public $kode, $nama, $harga, $stok, $jumlah, $total;
     public $diskon = 0;
 
     public function __construct($kode, $nama, $harga, $stok)
@@ -19,7 +19,7 @@ class Produk
 
     public function hitungNilaiStok()
     {
-        return $this->nilai = $this->stok * $this->harga;
+        return $this->jumlah = $this->stok * $this->harga;
     }
 
 
@@ -34,9 +34,8 @@ class Produk
             $diskon = 0;
         }
         $this->diskon = $diskon;
-        $nilai_diskon = $this->nilai * ($this->diskon / 100);
-        $this->total = $this->nilai - $nilai_diskon;
-
+        $nilai_diskon = $this->jumlah * ($this->diskon / 100);
+        $this->total = $this->jumlah - $nilai_diskon;
     }
 
     public function tampilkanData()
@@ -53,11 +52,13 @@ class Produk
     }
 }
 
-$produk1 = new Produk("P001", "Laptop", 1000000, 2);
-$produk2 = new Produk("P002", "Mouse", 200000, 3);
+$produk1 = new Produk("P001", "Laptop", 1000000, 20);
+$produk2 = new Produk("P002", "Mouse", 200000, 50);
 
 $produk1->tampilkanData();
+
 echo "<hr>";
+
 $produk1->aturDiskon(10);
 $produk1->tampilkanData();
 
